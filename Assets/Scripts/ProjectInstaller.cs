@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project.Play;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -27,6 +28,7 @@ namespace Project
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<SceneManager>().AsSingle();
+            Container.BindInterfacesAndSelfTo<GameManager>().AsSingle();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Project.Play
 {
     public class OnGameStart { }
 
-    public class GameManager
+    public class GameManager : ITickable
     {
         public bool IsValidGame { get; private set; }
         public PlanetSettings CurrentPlanet { get; private set; }
@@ -51,6 +51,18 @@ namespace Project.Play
         public void AddScore()
         {
             ++this.Score;
+        }
+
+        public void Tick()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (IsValidGame)
+                {
+                    IsValidGame = false;
+                    sceneManager.SwitchScene(Scenes.MAINMENU);
+                }
+            }
         }
     }
 }

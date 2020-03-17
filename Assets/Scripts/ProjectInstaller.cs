@@ -27,6 +27,10 @@ namespace Project
 
         public override void InstallBindings()
         {
+            SignalBusInstaller.Install(Container);
+
+            Container.DeclareSignal<OnGameStart>();
+
             Container.BindInterfacesAndSelfTo<SceneManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<GameManager>().AsSingle();
         }

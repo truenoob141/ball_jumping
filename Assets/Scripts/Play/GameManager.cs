@@ -13,6 +13,18 @@ namespace Project.Play
         public bool IsValidGame { get; private set; }
         public PlanetSettings CurrentPlanet { get; private set; }
 
+        public int Score
+        {
+            get
+            {
+                return PlayerPrefs.GetInt("score");
+            }
+            private set
+            {
+                PlayerPrefs.SetInt("score", value);
+            }
+        }
+
         [Inject] private SceneManager sceneManager;
 
         private SignalBus signalBus;
@@ -34,6 +46,11 @@ namespace Project.Play
             sceneManager.SwitchScene(Scenes.GAME);
 
             this.signalBus.Fire(new OnGameStart());
+        }
+    
+        public void AddScore()
+        {
+            ++this.Score;
         }
     }
 }

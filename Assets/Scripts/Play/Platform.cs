@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Project.Play
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public class Platform : MonoBehaviour
+    public class Platform : MonoBehaviour, IInteractable
     {
         private SpriteRenderer spriteRenderer;
 
@@ -14,9 +14,10 @@ namespace Project.Play
             this.spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        public bool Interact()
         {
             this.spriteRenderer.color = Random.ColorHSV();
+            return true;
         }
     }
 }

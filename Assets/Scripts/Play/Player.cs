@@ -8,9 +8,6 @@ namespace Project.Play
     [RequireComponent(typeof(Rigidbody2D))]
     public class Player : MonoBehaviour
     {
-        [SerializeField]
-        private float speed = 1f;
-
         [Inject] private GameManager gameManager;
 
         private Rigidbody2D body;
@@ -42,14 +39,21 @@ namespace Project.Play
 
         private void Update()
         {
-            // FIXME Debug
-            if (Input.GetKey(KeyCode.A))
+            // Simple old input
+            // FIXME Replace to new input system
+#if UNITY_EDITOR
+            if (Input.GetMouseButton(0))
             {
-                this.body.AddForce(Vector2.left * speed);
-            }
-            else if (Input.GetKey(KeyCode.D))
+                var worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+#else
+            if (Input.touchCount > 0)
             {
-                this.body.AddForce(Vector2.right * speed);
+                var touch = Input.GetTouch(0);
+                var worldPos = Camera.main.ScreenToWorldPoint(touch.position);
+#endif
+
+                float dir = Mathf.Sign(worldPos.x - transform.position.x);
+                this.body.AddForce(Vector2.right * dir);
             }
         }
     }

@@ -35,5 +35,11 @@ namespace Project.Play
 
             this.signalBus.Fire(new OnGameStart());
         }
+    
+
+        public void AddScore()
+        {
+            Debug.Log("AddScore");
+        }
     }
 }

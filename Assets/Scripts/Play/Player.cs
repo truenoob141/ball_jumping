@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace Project.Play
 {
@@ -9,6 +10,8 @@ namespace Project.Play
     {
         [SerializeField]
         private float speed = 1f;
+
+        [Inject] private GameManager gameManager;
 
         private Rigidbody2D body;
 
@@ -19,6 +22,14 @@ namespace Project.Play
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            // Interact
+            var interact = collision.collider.GetComponent<IInteractable>();
+            if (interact != null && interact.Interact())
+            {
+                gameManager.AddScore();
+            }
+
+            // Bounce
             // Use normal for angular bounce
             Vector2 normal = collision.contacts[0].normal;
 

@@ -8,6 +8,9 @@ namespace Project.Play
     [RequireComponent(typeof(Rigidbody2D))]
     public class Player : MonoBehaviour
     {
+        [SerializeField]
+        private float jumpForce = 9.81f;
+
         [Inject] private GameManager gameManager;
 
         private Rigidbody2D body;
@@ -32,7 +35,7 @@ namespace Project.Play
 
             Vector2 vel = body.velocity;
             vel.x += collision.relativeVelocity.x * -Mathf.Abs(normal.x);
-            vel.y += Physics2D.gravity.y * normal.y;
+            vel.y -= jumpForce * normal.y;
 
             this.body.velocity = Vector2.Reflect(vel, normal);
         }

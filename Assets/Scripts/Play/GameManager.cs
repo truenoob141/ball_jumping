@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Zenject;
 
-namespace Project.Play
+namespace Project.Game
 {
     public class OnGameStart { }
 

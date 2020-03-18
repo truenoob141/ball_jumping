@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-namespace Project.Play
+namespace Project.Game
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class Player : MonoBehaviour

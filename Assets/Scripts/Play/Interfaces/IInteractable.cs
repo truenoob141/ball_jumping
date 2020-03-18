@@ -1,4 +1,4 @@
-﻿namespace Project.Play
+﻿namespace Project.Game
 {
     public interface IInteractable
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Project.Play
+namespace Project.Game
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public class Platform : MonoBehaviour, IInteractable

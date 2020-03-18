@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Project.Play
+namespace Project.Game
 {
     [RequireComponent(typeof(Graphic))]
     public class GameArea : MonoBehaviour, IPointerClickHandler

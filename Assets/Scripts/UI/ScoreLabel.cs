@@ -10,7 +10,7 @@ namespace Project
         [SerializeField]
         private string format = "Score : {0}";
 
-        [Inject] private Play.GameManager gameManager;
+        [Inject] private Game.GameManager gameManager;
 
         private TMP_Text label;
 
